@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,8 +16,15 @@ public class WaveSpawner : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+
+        // SpawnEnemy();
         StartCoroutine(SpawnEnemy());
     }
+
+    //private void SpawnEnemy() {
+    //    GameObject newEnemy = Instantiate(enemyPrefab, spawnPoints[0].position, Quaternion.identity);
+    //    newEnemy.transform.parent = enemyParentTransform;
+    //}
 
     private IEnumerator SpawnEnemy() {
 

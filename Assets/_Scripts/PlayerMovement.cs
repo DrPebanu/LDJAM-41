@@ -19,9 +19,6 @@ public class PlayerMovement : MonoBehaviour {
 
     [SerializeField] AudioClip mainEngine;
 
-    bool playerHasHorizontalSpeed;
-
-
     AudioSource audioSource;
     Rigidbody2D myRigidBody;
 
@@ -58,7 +55,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void KillPlayer() {
         print("You are dead fool!");
-        // Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     private void Turn() {
@@ -89,35 +86,4 @@ public class PlayerMovement : MonoBehaviour {
         }
         // Particles Play
     }
-
-
-
-    //private void Jump() { // Using better Jump
-
-    //    if (Input.GetButtonDown("Jump") && myRigidBody.velocity.y == 0f) {
-    //        myRigidBody.AddForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
-
-    //    }
-
-    //    if (myRigidBody.velocity.y < Mathf.Epsilon)
-    //        myRigidBody.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-    //    else if (myRigidBody.velocity.y > Mathf.Epsilon)
-    //        myRigidBody.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-
-    //}
-
-    //private void Run() {
-    //    float controlThrow = Input.GetAxis("Horizontal");
-    //    Vector2 playerVelocity = new Vector2(controlThrow * runSpeed, myRigidBody.velocity.y);
-    //    myRigidBody.velocity = playerVelocity;
-
-    //    playerHasHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
-    //}
-
-    //private void FlipSprite() {
-
-
-    //    if (playerHasHorizontalSpeed)
-    //        transform.localScale = new Vector2(Mathf.Sign(myRigidBody.velocity.x), 1f);
-    //}
 }
