@@ -19,6 +19,7 @@ public class EnemyMover : MonoBehaviour {
 
         MoveEnemy();
         Physics2D.IgnoreLayerCollision(8, 9, true);
+
 	}
 
     private void OnCollisionEnter2D(Collision2D collision) {

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -55,7 +56,8 @@ public class PlayerMovement : MonoBehaviour {
 
     private void KillPlayer() {
         print("You are dead fool!");
-        Destroy(gameObject);
+        SceneManager.LoadScene(0);
+        // Destroy(gameObject);
     }
 
     private void Turn() {
