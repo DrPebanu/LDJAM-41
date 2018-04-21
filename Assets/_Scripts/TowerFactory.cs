@@ -8,39 +8,56 @@ public class TowerFactory : MonoBehaviour {
     [SerializeField] Tower towerPrefab;
     [SerializeField] Transform towerParentTransform;
 
-    Queue<Tower> towerBuffer = new Queue<Tower>();
-    Vector2 spawnPosition;
+    List<Tower> towerBuffer = new List<Tower>();
 
-    public void AddTower(TowerZone spawnZone) {
+    public void AddTower() {
 
         int numTowers = towerBuffer.Count;
-        spawnPosition = new Vector2(spawnZone.transform.position.x, spawnZone.transform.position.y + 0.8f);
 
         if (numTowers < towerLimit)
-            InstantiateNewTower(spawnZone);
+            InstantiateNewTower();
         else
-            MoveExistingTower(spawnZone);
+            print("You are at the Tower Limit");
     }
 
-    private void MoveExistingTower(TowerZone newSpawnZone) {
+    public void PickUpTower(TowerZone pickUpZone) {
 
-        Tower oldTower = towerBuffer.Dequeue();
+        print("You Picked up the tower");
 
-        oldTower.currentZone.isPlaceable = true;
-        newSpawnZone.isPlaceable = false;
-        oldTower.currentZone = newSpawnZone;
+        foreach (Tower tower in towerBuffer) {
+            if (tower.currentZone == pickUpZone) {
+                tower.isPlaced = false;
+                tower.gameObject.SetActive(false);
+                tower.currentZone.isPlaceable = true;
+            }
+        }
 
-        oldTower.transform.position = spawnPosition;
-
-        towerBuffer.Enqueue(oldTower);
     }
 
-    private void InstantiateNewTower(TowerZone spawnZone) {
-        Tower newTower = Instantiate(towerPrefab, spawnPosition, Quaternion.identity);
+    public void PlaceExistingTower(TowerZone newSpawnZone) {
+
+        Vector2 spawnPosition = new Vector2(newSpawnZone.transform.position.x, newSpawnZone.transform.position.y + 0.8f);
+
+        foreach (Tower tower in towerBuffer) {
+            if (tower.isPlaced == false) {
+                tower.isPlaced = true;
+                tower.currentZone = newSpawnZone;
+                newSpawnZone.isPlaceable = false;
+                tower.transform.position = spawnPosition;
+                tower.gameObject.SetActive(true);
+                break;
+            }
+        }
+    }
+
+    private void InstantiateNewTower() {
+        Tower newTower = Instantiate(towerPrefab, gameObject.transform.position, Quaternion.identity);
         newTower.transform.parent = towerParentTransform;
+        newTower.gameObject.SetActive(false);
 
-        spawnZone.isPlaceable = false;
-        newTower.currentZone = spawnZone;
-        towerBuffer.Enqueue(newTower);
+        PlayerMovement player = FindObjectOfType<PlayerMovement>();
+        player.isCarrying = true;
+
+        towerBuffer.Add(newTower);
     }
 }

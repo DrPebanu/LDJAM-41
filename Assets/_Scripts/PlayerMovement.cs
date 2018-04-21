@@ -6,11 +6,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     public bool isCarrying = false;
-    
+
     //[SerializeField] float runSpeed = 5f;
     //[SerializeField] float jumpSpeed = 5f;
     //[SerializeField] float fallMultiplier = 2.5f;
     //[SerializeField] float lowJumpMultiplier = 2f;
+
+    [SerializeField] TowerFactory towerFactory;
 
     [SerializeField] float turnSpeed = 100f;
     [SerializeField] float mainBoost = 100f;
@@ -43,17 +45,20 @@ public class PlayerMovement : MonoBehaviour {
         if (collisionTag == "Enemy")
             KillPlayer();
         else if (collisionTag == "Start")
-            PickUpTower();
+            HandPlayerNewTower();
 
     }
 
-    private void PickUpTower() {
-        isCarrying = true;
+    private void HandPlayerNewTower() {
+        if (isCarrying)
+            print("You can only carry one tower at a time");
+        else
+            towerFactory.AddTower();
     }
 
     private void KillPlayer() {
         print("You are dead fool!");
-        Destroy(gameObject);
+        // Destroy(gameObject);
     }
 
     private void Turn() {

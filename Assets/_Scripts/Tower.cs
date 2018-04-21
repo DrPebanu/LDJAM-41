@@ -6,17 +6,13 @@ using UnityEngine;
 public class Tower : MonoBehaviour {
 
     public TowerZone currentZone;
+    public bool isPlaced = false;
 
     [SerializeField] float attackRange = 10f;
     [SerializeField] ParticleSystem projectile;
 
     [SerializeField] Transform targetEnemy;
 
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {

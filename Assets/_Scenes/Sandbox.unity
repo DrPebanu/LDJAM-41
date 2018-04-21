@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 197740985}
   m_Layer: 8
   m_Name: Start
-  m_TagString: Untagged
+  m_TagString: Start
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -456,6 +456,11 @@ Prefab:
       propertyPath: m_Mass
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114746889345961956, guid: dc972f516fc69b649b85a9aeea42cb45,
+        type: 2}
+      propertyPath: towerFactory
+      value: 
+      objectReference: {fileID: 1908746128}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc972f516fc69b649b85a9aeea42cb45, type: 2}
   m_IsPrefabParent: 0

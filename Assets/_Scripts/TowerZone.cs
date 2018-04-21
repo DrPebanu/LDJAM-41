@@ -17,8 +17,12 @@ public class TowerZone : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
 
         if (isPlaceable && player.isCarrying) {
-            towerFactory.AddTower(this);
+            towerFactory.PlaceExistingTower(this);
             player.isCarrying = false;
+        }
+        else if (!isPlaceable && !player.isCarrying) {
+            towerFactory.PickUpTower(this);
+            player.isCarrying = true;
         }
 
     }
