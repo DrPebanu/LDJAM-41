@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class PlayerBase : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField] int health = 10;
+
+    public void TakeDamage(int enemyDamage) {
+        if (health <= 1)
+            GameOver();
+
+        health--;
+    }
+
+    public void ScorePoints(int scoreToAdd) {
+
+    }
+
+    private void GameOver() {
+        print("You Lost, TO BAD!");
+    }
 }

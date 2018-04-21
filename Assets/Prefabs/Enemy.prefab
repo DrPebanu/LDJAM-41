@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1966597773906146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.14, y: -3.98, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4080695580412234}
@@ -129,6 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aebe884762ab6d42bb0189629fd6b1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPoints: 1
+  enemyDamage: 1
+  scorePerKill: 1
 --- !u!114 &114595486200226788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e1b877b08862443bbd3658142e1672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1
+  movementSpeed: 5
 --- !u!212 &212677081143051280
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -172,8 +175,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -58896133
-  m_SortingLayer: 3
+  m_SortingLayerID: 97383353
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300280, guid: 29033e57a181b6d489cbdca73ebc4228, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
