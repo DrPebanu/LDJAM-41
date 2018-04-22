@@ -26,12 +26,12 @@ public class GameOver : MonoBehaviour {
 
     public void StartGameOver() {
 
-        //animator.SetTrigger("GameOver");
-        //player.SetActive(false);
-        //towers.SetActive(false);
-        //enemies.SetActive(false);
-        //spawners.SetActive(false);
-        //gameIsOver = true;
+        animator.SetTrigger("GameOver");
+        player.SetActive(false);
+        towers.SetActive(false);
+        enemies.SetActive(false);
+        spawners.SetActive(false);
+        gameIsOver = true;
 
     }
 }
