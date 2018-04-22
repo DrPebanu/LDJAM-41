@@ -8,11 +8,8 @@ public class PlayerMovement : MonoBehaviour {
 
     public bool isCarrying = false;
 
-    //[SerializeField] float runSpeed = 5f;
-    //[SerializeField] float jumpSpeed = 5f;
-    //[SerializeField] float fallMultiplier = 2.5f;
-    //[SerializeField] float lowJumpMultiplier = 2f;
-
+    [SerializeField] Sprite isCarryingSprite;
+    [SerializeField] Sprite isNotCarryingSprite;
     [SerializeField] TowerFactory towerFactory;
 
     [SerializeField] float turnSpeed = 100f;
@@ -30,11 +27,19 @@ public class PlayerMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        //Run();
-        //FlipSprite();
-        // Jump();
         Turn();
         Boost();
+        CheckIfCarrying();
+    }
+
+    private void CheckIfCarrying() {
+
+        SpriteRenderer playerRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        if (isCarrying)
+            playerRenderer.sprite = isCarryingSprite;
+        else
+            playerRenderer.sprite = isNotCarryingSprite;
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -57,7 +62,6 @@ public class PlayerMovement : MonoBehaviour {
     private void KillPlayer() {
         print("You are dead fool!");
         SceneManager.LoadScene(0);
-        // Destroy(gameObject);
     }
 
     private void Turn() {
@@ -78,7 +82,6 @@ public class PlayerMovement : MonoBehaviour {
 
     private void StopApplyingThrust() {
         audioSource.Stop();
-        // Particles Stop
     }
 
     private void ApplyThrust() {
@@ -86,6 +89,5 @@ public class PlayerMovement : MonoBehaviour {
         if (!audioSource.isPlaying) {
             audioSource.PlayOneShot(mainEngine);
         }
-        // Particles Play
     }
 }

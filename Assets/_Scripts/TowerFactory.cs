@@ -10,6 +10,12 @@ public class TowerFactory : MonoBehaviour {
 
     List<Tower> towerBuffer = new List<Tower>();
 
+    public int GetNumOfTowers() {
+        int numOfTowers = towerBuffer.Count;
+
+        return numOfTowers;
+    }
+
     public void AddTower() {
 
         int numTowers = towerBuffer.Count;
