@@ -11,7 +11,8 @@ public class ActivateSpawns : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        StartSpawning();
+
+        Invoke("StartSpawning", 5f);
 	}
 
     private void StartSpawning() {

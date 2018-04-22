@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aebe884762ab6d42bb0189629fd6b1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 1
+  healthPoints: 3
   enemyDamage: 1
   scorePerKill: 1
 --- !u!114 &114595486200226788

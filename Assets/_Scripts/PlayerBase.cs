@@ -11,6 +11,8 @@ public class PlayerBase : MonoBehaviour {
     [SerializeField] Text healthText;
     [SerializeField] Text scoreText;
 
+    [SerializeField] GameOver gameOver;
+
     [SerializeField] SpriteRenderer baseMesh;
 
 
@@ -64,7 +66,7 @@ public class PlayerBase : MonoBehaviour {
 
     public void TakeDamage(int enemyDamage) {
         if (health <= 1)
-            GameOver();
+            gameOver.StartGameOver();
 
         health -= enemyDamage;
         UpdateTextFields();
@@ -75,7 +77,4 @@ public class PlayerBase : MonoBehaviour {
         UpdateTextFields();
     }
 
-    private void GameOver() {
-        print("You Lost, TO BAD!");
-    }
 }

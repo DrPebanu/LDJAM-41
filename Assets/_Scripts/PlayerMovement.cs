@@ -11,17 +11,14 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] Sprite isCarryingSprite;
     [SerializeField] Sprite isNotCarryingSprite;
     [SerializeField] TowerFactory towerFactory;
+    [SerializeField] GameOver gameOver;
 
     [SerializeField] float turnSpeed = 100f;
     [SerializeField] float mainBoost = 100f;
 
-    [SerializeField] AudioClip mainEngine;
-
-    AudioSource audioSource;
     Rigidbody2D myRigidBody;
 
     private void Start() {
-        audioSource = GetComponent<AudioSource>();
         myRigidBody = GetComponent<Rigidbody2D>();
     }
 
@@ -46,7 +43,7 @@ public class PlayerMovement : MonoBehaviour {
         string collisionTag = collision.gameObject.tag;
 
         if (collisionTag == "Enemy")
-            KillPlayer();
+            gameOver.StartGameOver();
         else if (collisionTag == "Start")
             HandPlayerNewTower();
 
@@ -59,13 +56,9 @@ public class PlayerMovement : MonoBehaviour {
             towerFactory.AddTower();
     }
 
-    private void KillPlayer() {
-        print("You are dead fool!");
-        SceneManager.LoadScene(0);
-    }
 
     private void Turn() {
-        myRigidBody.angularVelocity = 0f; // Remove rotation due to physics
+        myRigidBody.angularVelocity = 0f;
         float xThrow = Input.GetAxis("Horizontal");
         float rotationThisFrame = xThrow * turnSpeed * Time.deltaTime;
 
@@ -74,20 +67,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Boost() {
 
-        if (Input.GetButton("Jump")) // Can thrust while rotating
-            ApplyThrust();
-        else
-            StopApplyingThrust();
-    }
-
-    private void StopApplyingThrust() {
-        audioSource.Stop();
-    }
-
-    private void ApplyThrust() {
-        myRigidBody.AddRelativeForce(Vector2.up * mainBoost * Time.deltaTime);
-        if (!audioSource.isPlaying) {
-            audioSource.PlayOneShot(mainEngine);
-        }
+        if (Input.GetButton("Jump"))
+            myRigidBody.AddRelativeForce(Vector2.up * mainBoost * Time.deltaTime);
     }
 }

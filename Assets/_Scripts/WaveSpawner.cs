@@ -24,8 +24,6 @@ public class WaveSpawner : MonoBehaviour {
             yield return new WaitForSeconds(secondsBetweenSpawns);
 
         }
-
-
     }
 
     private void OnEnable() {

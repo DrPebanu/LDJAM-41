@@ -16,16 +16,12 @@ public class Enemy : MonoBehaviour {
         playerBase = FindObjectOfType<PlayerBase>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     private void OnParticleCollision(GameObject other) {
         if (healthPoints <= 1)
             KillEnemy(false);
-        else 
+        else
             healthPoints--;
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

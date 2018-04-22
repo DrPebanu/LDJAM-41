@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1001050863979706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.39, y: -7.24, z: 0}
+  m_LocalPosition: {x: 0, y: -18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4025231863767244}
@@ -214,6 +214,7 @@ MonoBehaviour:
   isNotCarryingSprite: {fileID: 21300000, guid: 4b30b598d8c9747438224cae59ccc274,
     type: 3}
   towerFactory: {fileID: 0}
+  gameOver: {fileID: 0}
   turnSpeed: 100
   mainBoost: 1000
   mainEngine: {fileID: 8300000, guid: 80ef03285d59ebc49bfb111cb99acb3a, type: 3}
