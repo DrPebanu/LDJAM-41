@@ -13,6 +13,10 @@ public class PlayerBase : MonoBehaviour {
 
     [SerializeField] SpriteRenderer baseMesh;
 
+
+    [SerializeField] Sprite base6Fires;
+    [SerializeField] Sprite base5Fires;
+    [SerializeField] Sprite base4Fires;
     [SerializeField] Sprite base3Fires;
     [SerializeField] Sprite base2Fires;
     [SerializeField] Sprite base1Fires;
@@ -28,15 +32,29 @@ public class PlayerBase : MonoBehaviour {
     private void Update() {
         towersInScene = FindObjectOfType<TowerFactory>().GetNumOfTowers();
 
-        if (towersInScene == 0)
-            baseMesh.sprite = base3Fires;
-        else if (towersInScene == 1)
-            baseMesh.sprite = base2Fires;
-        else if (towersInScene == 2)
-            baseMesh.sprite = base1Fires;
-        else if (towersInScene == 3)
-            baseMesh.sprite = baseNoFires;
-
+        switch (towersInScene) {
+            case 0:
+                baseMesh.sprite = base6Fires; 
+                break;
+            case 1:
+                baseMesh.sprite = base5Fires;
+                break;
+            case 2:
+                baseMesh.sprite = base4Fires;
+                break;
+            case 3:
+                baseMesh.sprite = base3Fires;
+                break;
+            case 4:
+                baseMesh.sprite = base2Fires;
+                break;
+            case 5:
+                baseMesh.sprite = base1Fires;
+                break;
+            case 6:
+                baseMesh.sprite = baseNoFires;
+                break;
+        }
     }
 
     private void UpdateTextFields() {
